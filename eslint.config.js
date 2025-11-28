@@ -254,7 +254,7 @@ module.exports = tseslint.config(
   },
   {
     // Specific configuration for test files
-    files: ['**/*.spec.ts', '**/*.test.ts'],
+    files: ['**/*.spec.ts', '**/*.test.ts', '**/*.stub.ts'],
     languageOptions: {
       globals: {
         jasmine: 'readonly',
@@ -266,10 +266,32 @@ module.exports = tseslint.config(
       },
     },
     rules: {
-      // Specific rules for test files
+      // Allow flexible typing and common test patterns
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/prefer-readonly': 'off',
+      '@typescript-eslint/member-ordering': 'off',
+      '@typescript-eslint/no-inferrable-types': 'off',
+
+      // Allow empty functions (hooks and helpers)
+      'no-empty-function': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
+
+      // Relax unused imports/vars in tests
+      'unused-imports/no-unused-imports': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+
+      // Allow devDependencies in tests
+      'import/no-extraneous-dependencies': 'off',
+
+      // Relax typical "unsafe" rules in tests
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
     },
   }
 );
