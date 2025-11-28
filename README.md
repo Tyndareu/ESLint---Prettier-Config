@@ -1,27 +1,70 @@
-# Eslint
+# Instalación y Configuración de ESLint
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+## Instalación
 
-## Development server
+### 1. Instalar ESLint con Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Reemplaza `18` por tu versión actual de Angular:
 
-## Code scaffolding
+```bash
+ng add @angular-eslint/schematics@18
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Instalar dependencias de Prettier y ESLint
 
-## Build
+```bash
+npm install prettier prettier-eslint eslint-config-prettier eslint-plugin-prettier typescript-eslint eslint-plugin-import eslint-plugin-unused-imports --save-dev
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Configuración
 
-## Running unit tests
+### 1. Copiar archivos de configuración
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Copia los siguientes archivos al directorio raíz del proyecto:
 
-## Running end-to-end tests
+- `.prettierrc` (configuración de Prettier)
+- `.prettierignore` (archivos a ignorar por Prettier)
+- `eslint.config.js` (configuración de ESLint - más completo que el generado automáticamente)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Agregar script de Prettier al package.json
 
-## Further help
+Añade el siguiente script en la sección `"scripts"` del archivo `package.json`:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```json
+"prettier": "npx prettier --write ."
+```
+
+**Ejemplo de package.json:**
+
+```json
+{
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "prettier": "npx prettier --write ."
+  }
+}
+```
+
+## Uso
+
+Una vez configurado, puedes ejecutar:
+
+- **Formatear código con Prettier:**
+
+  ```bash
+  npm run prettier
+  ```
+
+- **Verificar linting con ESLint:**
+  ```bash
+  ng lint
+  ```
+
+## Notas
+
+- La configuración `eslint.config.js` incluida en el raíz contiene settings más completos que los generados automáticamente por Angular.
+- Asegúrate de que tanto `prettier` como `eslint-plugin-prettier` estén correctamente instalados para que funcione la integración.
