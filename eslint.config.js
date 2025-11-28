@@ -37,6 +37,7 @@ module.exports = tseslint.config(
       'Thumbs.db',
       '*.log',
       '.runtimeconfig.json',
+      '.github',
     ],
   },
   {
