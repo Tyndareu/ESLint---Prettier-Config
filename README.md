@@ -1,17 +1,17 @@
-# ✨ Guía Alegre de ESLint + Prettier para Angular
+# ✨ Guía profesional de ESLint + Prettier para Angular
 
-¡Bienvenido! Esta guía te ayudará a tener un código ordenado, bonito y feliz en tu proyecto Angular. Con Prettier para el estilo y ESLint para la calidad, ¡tu código brillará! 🌈
+Esta guía describe una configuración clara y mantenible para formateo (Prettier) y análisis estático (ESLint) en proyectos Angular. El objetivo es asegurar consistencia, legibilidad y calidad del código en entornos de trabajo. 🌈
 
 ## 🚀 Instalación
 
-### 1) Añade soporte ESLint para Angular
-Reemplaza `18` por tu versión actual de Angular:
+### 1) Añadir soporte ESLint para Angular
+Reemplaza `18` por la versión de Angular utilizada en el proyecto:
 
 ```bash
 ng add @angular-eslint/schematics@18
 ```
 
-### 2) Instala dependencias de Prettier y ESLint
+### 2) Instalar dependencias de Prettier y ESLint
 
 ```bash
 npm install prettier prettier-eslint eslint-config-prettier eslint-plugin-prettier typescript-eslint eslint-plugin-import eslint-plugin-unused-imports --save-dev
@@ -19,13 +19,14 @@ npm install prettier prettier-eslint eslint-config-prettier eslint-plugin-pretti
 
 ## 🛠 Configuración
 
-### Copia los archivos de configuración
-Coloca en el raíz del proyecto:
+### Archivos de configuración
+Ubica en la raíz del proyecto:
 
-- `.prettierrc` → reglas de estilo (comillas, ancho de línea, etc.)
-- `.prettierignore` → archivos que Prettier no debe tocar
+– `.prettierrc` → reglas de estilo (comillas, ancho de línea, etc.)
+– `.prettierignore` → archivos excluidos de Prettier
+
 ### ⚙️ Configuración de VS Code (dos opciones)
-Para que el guardado y pegado automaticen correcciones de ESLint/Prettier, añade estas preferencias en VS Code. Puedes hacerlo de dos maneras:
+Para que el guardado y el pegado automaticen correcciones de ESLint/Prettier, añade estas preferencias en VS Code. Puedes hacerlo de dos maneras:
 
 1) Configuración por proyecto (recomendado)
 - Crea el archivo `.vscode/settings.json` en la raíz del proyecto.
@@ -48,12 +49,15 @@ Para que el guardado y pegado automaticen correcciones de ESLint/Prettier, añad
 - Pega el mismo bloque JSON en el objeto raíz.
 
 Notas:
-- `source.fixAll.eslint: "explicit"` aplica las correcciones de ESLint al guardar cuando se ejecutan acciones de código.
+- `source.fixAll.eslint: "explicit"` aplica correcciones de ESLint al guardar cuando se ejecutan acciones de código.
 - `source.fixAll` cubre correcciones de otros proveedores que soporten fixAll.
-- `source.sortMembers` ordena automáticamente miembros (si tu extensión lo soporta).
-- `eslint.config.js` → configuración completa de ESLint (más pulida que la generada por defecto)
+- `source.sortMembers` ordena automáticamente miembros (si la extensión lo soporta).
+- `eslint.config.js` → configuración completa de ESLLint (más detallada que la generada por defecto).
 
-Agrega este script para formatear fácilmente:
+Importante:
+- Todas las reglas y ajustes propuestos en esta guía son opcionales. Cada equipo puede adaptarlos según sus necesidades, añadiendo o quitando reglas en `eslint.config.js` y ajustando preferencias en `.prettierrc` y VS Code.
+
+Añade este script para formatear el proyecto:
 
 ```json
 "prettier": "npx prettier --write ."
@@ -77,36 +81,37 @@ Ejemplo de `package.json` (sección `scripts`):
 
 ## 🎯 Uso rápido
 
-- Formatear código con Prettier:
+- Formateo con Prettier:
 
   ```bash
   npm run prettier
   ```
 
-- Ejecutar el lint de Angular/ESLint:
+- Ejecución de lint (Angular/ESLint):
 
   ```bash
   npm run lint
   ```
 
-## 🧪 Reglas más flexibles… ¡solo en tests!
+## 🧪 Reglas más flexibles (solo en tests)
 
-Para que escribir pruebas sea más cómodo, en `eslint.config.js` aplicamos reglas relajadas únicamente a archivos `*.spec.ts` y `*.test.ts`. Por ejemplo:
+Para agilizar la escritura de pruebas, en `eslint.config.js` se aplican reglas relajadas únicamente a archivos `*.spec.ts` y `*.test.ts`. Ejemplos:
 
 - Permitir `any` y patrones "unsafe" (útil para mocks y stubs)
 - No exigir tipo de retorno explícito
-- Permitir variables/parámetros no usados en escenarios de Given/When/Then
-- Consola libre para depurar (`console.log` permitido)
-- Imports extrínsecos sin quejarse
+- Permitir variables/parámetros no usados en escenarios Given/When/Then
+- Permitir uso de consola para depuración (`console.log` permitido)
+- Flexibilizar validaciones de imports
 
-Estas reglas NO afectan al código de aplicación: solo a tus tests. Así puedes mantener código de producción estricto y pruebas ágiles. ✅
+Estas reglas no afectan al código de aplicación; únicamente a los tests. Así se mantiene un código de producción estricto y pruebas ágiles. ✅
 
 ## 📎 Notas
 
-- La configuración de `eslint.config.js` en este repo es más completa que la generada automáticamente por Angular.
-- Asegúrate de tener instalados `prettier` y `eslint-plugin-prettier` para que la integración funcione bien.
-- Si quieres aún más libertad en tests, puedes desactivar `prettier` en esa sección del config (`prettier/prettier: 'off'`).
+- La configuración de `eslint.config.js` en este repositorio es más completa que la generada automáticamente por Angular.
+- Verifica que `prettier` y `eslint-plugin-prettier` estén instalados para una integración correcta.
+- Si se requiere mayor flexibilidad en tests, se puede desactivar `prettier` en esa sección del config (`prettier/prettier: 'off'`).
+ - Recuerda: todas las reglas añadidas pueden personalizarse. Ajusta, añade o elimina según el criterio del equipo y las políticas del proyecto.
 
 ---
 
-¡Y listo! Disfruta un código limpio, consistente y feliz 🎉.
+Listo. Con esta configuración tendrás un código consistente, legible y fácil de mantener. 🎉
