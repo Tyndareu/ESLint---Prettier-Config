@@ -1,4 +1,4 @@
-# ✨ Guía profesional de ESLint + Prettier para Angular
+# ✨ Guía de ESLint + Prettier para Angular
 
 Esta guía describe una configuración clara y mantenible para formateo (Prettier) y análisis estático (ESLint) en proyectos Angular. El objetivo es asegurar consistencia, legibilidad y calidad del código en entornos de trabajo. 🌈
 
@@ -22,8 +22,11 @@ npm install prettier prettier-eslint eslint-config-prettier eslint-plugin-pretti
 ### Archivos de configuración
 Ubica en la raíz del proyecto:
 
-– `.prettierrc` → reglas de estilo (comillas, ancho de línea, etc.)
-– `.prettierignore` → archivos excluidos de Prettier
+- `.prettierrc` → reglas de estilo (comillas, ancho de línea, etc.)
+- `.prettierignore` → archivos excluidos de Prettier
+- `eslint.config.js` → se crea automáticamente al añadir `@angular-eslint`; es necesario completar su contenido con la configuración deseada (las reglas propuestas son opcionales y pueden ajustarse a preferencia del equipo).
+
+Nota: Los tres archivos mencionados ya están presentes en este repositorio y pueden copiarse directamente a otros proyectos si se desea reutilizar la configuración.
 
 ### ⚙️ Configuración de VS Code (dos opciones)
 Para que el guardado y el pegado automaticen correcciones de ESLint/Prettier, añade estas preferencias en VS Code. Puedes hacerlo de dos maneras:
