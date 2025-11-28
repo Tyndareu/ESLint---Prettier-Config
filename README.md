@@ -111,7 +111,6 @@ Estas reglas no afectan al código de aplicación; únicamente a los tests. Así
 ## 📎 Notas
 
 - La configuración de `eslint.config.js` en este repositorio es más completa que la generada automáticamente por Angular.
-- Verifica que `prettier` y `eslint-plugin-prettier` estén instalados para una integración correcta.
 - Si se requiere mayor flexibilidad en tests, se puede desactivar `prettier` en esa sección del config (`prettier/prettier: 'off'`).
  - Recuerda: todas las reglas añadidas pueden personalizarse. Ajusta, añade o elimina según el criterio del equipo y las políticas del proyecto.
 
