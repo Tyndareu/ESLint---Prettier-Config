@@ -5,6 +5,7 @@ Esta guía describe una configuración clara y mantenible para formateo (Prettie
 ## 🚀 Instalación
 
 ### 1) Añadir soporte ESLint para Angular
+
 Reemplaza `18` por la versión de Angular utilizada en el proyecto:
 
 ```bash
@@ -20,6 +21,7 @@ npm install prettier prettier-eslint eslint-config-prettier eslint-plugin-pretti
 ## 🛠 Configuración
 
 ### Archivos de configuración
+
 Ubica en la raíz del proyecto:
 
 - `.prettierrc` → reglas de estilo (comillas, ancho de línea, etc.)
@@ -29,9 +31,11 @@ Ubica en la raíz del proyecto:
 Nota: Los tres archivos mencionados ya están presentes en este repositorio y pueden copiarse directamente a otros proyectos si se desea reutilizar la configuración.
 
 ### ⚙️ Configuración de VS Code (dos opciones)
+
 Para que el guardado y el pegado automaticen correcciones de ESLint/Prettier, añade estas preferencias en VS Code. Puedes hacerlo de dos maneras:
 
-1) Configuración por proyecto (recomendado)
+1. Configuración por proyecto (recomendado)
+
 - Crea el archivo `.vscode/settings.json` en la raíz del proyecto.
 - Copia este contenido:
 
@@ -46,18 +50,21 @@ Para que el guardado y el pegado automaticen correcciones de ESLint/Prettier, a�
 }
 ```
 
-2) Configuración global de VS Code
+2. Configuración global de VS Code
+
 - Abre VS Code → File > Preferences > Settings.
 - Usa el botón “Open Settings (JSON)” o busca “settings.json” y abre el archivo de usuario.
 - Pega el mismo bloque JSON en el objeto raíz.
 
 Notas:
+
 - `source.fixAll.eslint: "explicit"` aplica correcciones de ESLint al guardar cuando se ejecutan acciones de código.
 - `source.fixAll` cubre correcciones de otros proveedores que soporten fixAll.
 - `source.sortMembers` ordena automáticamente miembros (si la extensión lo soporta).
 - `eslint.config.js` → configuración completa de ESLLint (más detallada que la generada por defecto).
 
 Importante:
+
 - Todas las reglas y ajustes propuestos en esta guía son opcionales. Cada equipo puede adaptarlos según sus necesidades, añadiendo o quitando reglas en `eslint.config.js` y ajustando preferencias en `.prettierrc` y VS Code.
 
 Añade este script para formatear el proyecto:
@@ -112,7 +119,7 @@ Estas reglas no afectan al código de aplicación; únicamente a los tests. Así
 
 - La configuración de `eslint.config.js` en este repositorio es más completa que la generada automáticamente por Angular.
 - Si se requiere mayor flexibilidad en tests, se puede desactivar `prettier` en esa sección del config (`prettier/prettier: 'off'`).
- - Recuerda: todas las reglas añadidas pueden personalizarse. Ajusta, añade o elimina según el criterio del equipo y las políticas del proyecto.
+- Recuerda: todas las reglas añadidas pueden personalizarse. Ajusta, añade o elimina según el criterio del equipo y las políticas del proyecto.
 
 ---
 

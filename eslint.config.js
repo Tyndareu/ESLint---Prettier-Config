@@ -97,14 +97,7 @@ module.exports = tseslint.config(
       'import/order': [
         'error',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',
@@ -125,12 +118,7 @@ module.exports = tseslint.config(
       '@typescript-eslint/member-ordering': [
         'error',
         {
-          default: [
-            'static-field',
-            'instance-field',
-            'static-method',
-            'instance-method',
-          ],
+          default: ['static-field', 'instance-field', 'static-method', 'instance-method'],
         },
       ],
       // Allows explicit types for inferrable types
@@ -217,6 +205,18 @@ module.exports = tseslint.config(
         },
       ],
 
+      'max-len': [
+        'error',
+        {
+          code: 120,
+          tabWidth: 2,
+          ignoreUrls: true,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+          ignoreComments: true,
+        },
+      ],
+
       // Prettier rules
       'prettier/prettier': 'error',
 
@@ -245,11 +245,7 @@ module.exports = tseslint.config(
   {
     // Configuration for HTML files
     files: ['**/*.html'],
-    extends: [
-      ...angular.configs.templateRecommended,
-      ...angular.configs.templateAccessibility,
-      prettierConfig,
-    ],
+    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility, prettierConfig],
     // HTML template rules
     rules: {},
   },
@@ -280,10 +276,7 @@ module.exports = tseslint.config(
 
       // Relax unused imports/vars in tests
       'unused-imports/no-unused-imports': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
-      ],
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
 
       // Allow devDependencies in tests
       'import/no-extraneous-dependencies': 'off',
